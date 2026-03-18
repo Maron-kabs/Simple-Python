@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maron's Python Learning Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .nav-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .section {
+            display: none;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.5s ease-in;
+        }
+        .section.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            font-weight: bold;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        code {
+            background: #2d3748;
+            color: #f7fafc;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+        pre {
+            background: #2d3748;
+            color: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+        }
+        .tip {
+            background: #e8f5e8;
+            border-left: 5px solid #27ae60;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .exercise {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐍 Maron's Python Guide</h1>
+            <p class="subtitle">Master Python step-by-step. Click any button below to jump into a topic.</p>
+        </header>
+
+        <nav>
+            <div class="nav-grid">
+                <button class="nav-btn" onclick="showSection('setup')">1. Setup</button>
+                <button class="nav-btn" onclick="showSection('basics')">2. Basics</button>
+                <button class="nav-btn" onclick="showSection('control')">3. Control Flow</button>
+                <button class="nav-btn" onclick="showSection('functions')">4. Functions</button>
+                <button class="nav-btn" onclick="showSection('data')">5. Data Structures</button>
+                <button class="nav-btn" onclick="showSection('strings')">6. Strings</button>
+                <button class="nav-btn" onclick="showSection('files')">7. Files & Errors</button>
+                <button class="nav-btn" onclick="showSection('modules')">8. Modules</button>
+                <button class="nav-btn" onclick="showSection('oop')">9. OOP</button>
+                <button class="nav-btn" onclick="showSection('projects')">10. Projects</button>
+            </div>
+        </nav>
+
+        <div id="setup" class="section active">
+            <h2>🚀 Quick Setup (5 minutes)</h2>
+            
+            <table>
+                <tr><th>Step</th><th>What To Do</th></tr>
+                <tr><td>1. Install Python</td><td><a href="https://python.org/downloads" target="_blank">python.org/downloads</a> → Latest (3.12+) → Check "Add to PATH"</td></tr>
+                <tr><td>2. Test it</td><td>Terminal: <code>python --version</code> → Should show version number</td></tr>
+                <tr><td>3. Editor</td><td><a href="https://code.visualstudio.com" target="_blank">VS Code</a> + Python extension (free, best choice)</td></tr>
+                <tr><td>4. First file</td><td>Create <code>hello.py</code>: <code>print("Hello, Maron!")</code> → Run: <code>python hello.py</code></td></tr>
+            </table>
+
+            <div class="exercise">
+                <strong>Try Now:</strong> Make a file called <code>test.py</code> with <code>print("Python works!")</code> and run it.
+            </div>
+        </div>
+
+        <div id="basics" class="section">
+            <h2>📝 Core Basics</h2>
+            
+            <h3>Variables (No type declaration needed)</h3>
+            <pre><code>name = "Maron"
+age = 20
+height = 5.8
+is_cool = True
+nothing = None
+
+print(f"Hi {name}, you're {age}")</code></pre>
+
+            <table>
+                <tr><th>Type</th><th>Example</th><th>Use For</th></tr>
+                <tr><td><code>str</code></td><td><code>"hello"</code></td><td>Text</td></tr>
+                <tr><td><code>int</code></td><td><code>42</code></td><td>Whole numbers</td></tr>
+                <tr><td><code>float</code></td><td><code>3.14</code></td><td>Decimals</td></tr>
+                <tr><td><code>bool</code></td><td><code>True</code></td><td>True/False</td></tr>
+            </table>
+
+            <h3>Math & Comparisons</h3>
+            <pre><code># Math
+print(10 + 5)    # 15
+print(10 / 3)    # 3.333
+print(10 // 3)   # 3 (floor)
+print(10 % 3)    # 1 (remainder)
+print(2 ** 3)    # 8
+
+# Compare (returns True/False)
+print(10 > 5)    # True
+print(10 == 10)  # True (== is compare, = is assign)</code></pre>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> <code>=</code> assigns values. <code>==</code> compares. Beginners mix these up!
+            </div>
+        </div>
+
+        <div id="control" class="section">
+            <h2>🔄 Control Flow</h2>
+            
+            <h3>If Statements</h3>
+            <pre><code>score = 85
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")  # ← Runs here
+else:
+    print("C")</code></pre>
+
+            <h3>Loops</h3>
+            <pre><code># For loop (lists)
+fruits = ["apple", "banana", "orange"]
+for fruit in fruits:
+    print(fruit)
+
+# For loop (numbers)
+for i in range(5):  # 0,1,2,3,4
+    print(i)
+
+# While loop
+count = 0
+while count < 3:
+    print(count)
+    count += 1</code></pre>
+
+            <div class="exercise">
+                <strong>Practice:</strong> Write a loop that prints even numbers 2-10.
+            </div>
+        </div>
+
+        <div id="functions" class="section">
+            <h2>⚙️ Functions</h2>
+            <pre><code>def greet(name="Friend"):
+    """Greet someone (docstring explains what it does)"""
+    return f"Hello, {name}!"
+
+# Call it
+print(greet("Maron"))
+print(greet())  # Uses default</code></pre>
+
+            <div class="tip">
+                <strong>Rule:</strong> Same code 2+ times? Make it a function!
+            </div>
+        </div>
+
+        <div id="data" class="section">
+            <h2>📦 Data Structures</h2>
+            
+            <table>
+                <tr><th>Type</th><th>Example</th><th>Change?</th><th>Dups?</th><th>Order?</th></tr>
+                <tr><td>List</td><td><code>[1,2,3]</code></td><td>✅</td><td>✅</td><td>✅</td></tr>
+                <tr><td>Tuple</td><td><code>(1,2,3)</code></td><td>❌</td><td>✅</td><td>✅</td></tr>
+                <tr><td>Set</td><td><code>{1,2,3}</code></td><td>✅</td><td>❌</td><td>❌</td></tr>
+                <tr><td>Dict</td><td><code>{"name": "Maron"}</code></td><td>✅</td><td>Keys:❌</td><td>✅</td></tr>
+            </table>
+
+            <pre><code># List methods
+nums = [10,20,30]
+nums.append(40)
+nums[0]     # 10 (first)
+nums[-1]    # 40 (last)
+
+# Dict
+person = {"name": "Maron", "age": 20}
+print(person["name"])</code></pre>
+        </div>
+
+        <div id="strings" class="section">
+            <h2>🔤 Strings (Super Important!)</h2>
+            <pre><code>name = "Maron"
+age = 20
+
+# f-strings (best)
+print(f"{name} is {age}")
+
+# Methods
+text = "  hello world  "
+print(text.strip())      # "hello world"
+print(text.upper())      # "HELLO WORLD"
+print("a,b,c".split(",")) # ['a', 'b', 'c']
+
+# Slicing
+s = "Python"
+print(s[0])    # P
+print(s[1:4])  # yth
+print(s[::-1]) # nohtyP (reversed!)</code></pre>
+        </div>
+
+        <div id="files" class="section">
+            <h2>📁 Files & Error Handling</h2>
+            <pre><code># Write file
+with open("notes.txt", "w") as f:
+    f.write("Hello from Python!\n")
+
+# Read file
+with open("notes.txt") as f:
+    content = f.read()
+    print(content)
+
+# Safe errors
+try:
+    number = int(input("Number: "))
+    result = 100 / number
+except ValueError:
+    print("Not a number!")
+except ZeroDivisionError:
+    print("Can't divide by 0!")</code></pre>
+        </div>
+
+        <div id="modules" class="section">
+            <h2>📚 Modules & Libraries</h2>
+            <table>
+                <tr><th>Module</th><th>Install</th><th>Use For</th></tr>
+                <tr><td>random</td><td>Built-in</td><td>Random numbers</td></tr>
+                <tr><td>requests</td><td><code>pip install requests</code></td><td>APIs, web</td></tr>
+                <tr><td>pandas</td><td><code>pip install pandas</code></td><td>Data/Excel</td></tr>
+                <tr><td>flask</td><td><code>pip install flask</code></td><td>Websites</td></tr>
+            </table>
+
+            <pre><code>import random
+print(random.randint(1, 100))
+
+from datetime import datetime
+print(datetime.now())</code></pre>
+        </div>
+
+        <div id="oop" class="section">
+            <h2>🏗️ OOP (Classes)</h2>
+            <pre><code>class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+    
+    def bark(self):
+        return f"{self.name} says Woof!"
+
+# Use it
+my_dog = Dog("Rex", "Labrador")
+print(my_dog.bark())</code></pre>
+        </div>
+
+        <div id="projects" class="section">
+            <h2>🎯 5 Projects To Build</h2>
+            <table>
+                <tr><th>Project</th><th>Skills</th></tr>
+                <tr><td>Number Guessing Game</td><td>Loops, random, input</td></tr>
+                <tr><td>CLI To-Do List</td><td>Lists, functions, files</td></tr>
+                <tr><td>Password Generator</td><td>random, strings, loops</td></tr>
+                <tr><td>Weather App</td><td>APIs, requests, JSON</td></tr>
+                <tr><td>Web Scraper</td><td>requests, BeautifulSoup</td></tr>
+            </table>
+
+            <div class="exercise">
+                <strong>Start Here:</strong> Build the Number Guessing Game today!
+            </div>
+        </div>
+
+        <footer>
+            <p>Made for Maron | Save this file to your desktop 📱 | Learn 1 section per day</p>
+        </footer>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(s => s.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Smooth scroll to top
+            document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
