@@ -4,159 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maron's Python Learning Guide</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        nav {
-            background: rgba(255,255,255,0.95);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-        }
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        .nav-btn {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
-            border: none;
-            padding: 15px 20px;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        .section {
-            display: none;
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.5s ease-in;
-        }
-        .section.active { display: block; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        h2 {
-            color: #2c3e50;
-            font-size: 2em;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-        }
-        h3 {
-            color: #34495e;
-            font-size: 1.5em;
-            margin: 25px 0 15px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        th {
-            background: linear-gradient(45deg, #3498db, #2980b9);
-            color: white;
-            font-weight: bold;
-        }
-        tr:hover {
-            background: #f8f9fa;
-        }
-        code {
-            background: #2d3748;
-            color: #f7fafc;
-            padding: 4px 8px;
-            border-radius: 5px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-        }
-        pre {
-            background: #2d3748;
-            color: #f7fafc;
-            padding: 20px;
-            border-radius: 10px;
-            overflow-x: auto;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-            line-height: 1.6;
-        }
-        .tip {
-            background: #e8f5e8;
-            border-left: 5px solid #27ae60;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .warning {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .exercise {
-            background: #e3f2fd;
-            border-left: 5px solid #2196f3;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        footer {
-            text-align: center;
-            color: white;
-            margin-top: 40px;
-            padding: 20px;
-            opacity: 0.8;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -182,7 +30,7 @@
 
         <div id="setup" class="section active">
             <h2>🚀 Quick Setup (5 minutes)</h2>
-            
+
             <table>
                 <tr><th>Step</th><th>What To Do</th></tr>
                 <tr><td>1. Install Python</td><td><a href="https://python.org/downloads" target="_blank">python.org/downloads</a> → Latest (3.12+) → Check "Add to PATH"</td></tr>
@@ -198,7 +46,7 @@
 
         <div id="basics" class="section">
             <h2>📝 Core Basics</h2>
-            
+
             <h3>Variables (No type declaration needed)</h3>
             <pre><code>name = "Maron"
 age = 20
@@ -235,7 +83,7 @@ print(10 == 10)  # True (== is compare, = is assign)</code></pre>
 
         <div id="control" class="section">
             <h2>🔄 Control Flow</h2>
-            
+
             <h3>If Statements</h3>
             <pre><code>score = 85
 if score >= 90:
@@ -283,7 +131,7 @@ print(greet())  # Uses default</code></pre>
 
         <div id="data" class="section">
             <h2>📦 Data Structures</h2>
-            
+
             <table>
                 <tr><th>Type</th><th>Example</th><th>Change?</th><th>Dups?</th><th>Order?</th></tr>
                 <tr><td>List</td><td><code>[1,2,3]</code></td><td>✅</td><td>✅</td><td>✅</td></tr>
@@ -368,7 +216,7 @@ print(datetime.now())</code></pre>
     def __init__(self, name, breed):
         self.name = name
         self.breed = breed
-    
+
     def bark(self):
         return f"{self.name} says Woof!"
 
@@ -398,18 +246,6 @@ print(my_dog.bark())</code></pre>
         </footer>
     </div>
 
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(s => s.classList.remove('active'));
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Smooth scroll to top
-            document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
